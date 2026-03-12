@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_kuis_a/models/movie_model.dart';
-import 'package:latihan_kuis_a/screen/movie_detail_page.dart';
+import 'package:latihan_kuis_a/screen/game_detail_page.dart';
 import 'package:latihan_kuis_a/screen/profile_page.dart';
+import 'package:latihan_kuis_a/models/game_data.dart';
 
-class MovieListPage extends StatefulWidget {
+class GameListPage extends StatefulWidget {
   final String username;
-
-  const MovieListPage({super.key, required this.username});
-
-  @override
-  State<MovieListPage> createState() => _MovieListPageState();
+  const GameListPage({super.key, required this.username});
+  @override  
+  State<GameListPage> createState() => _GameListPageState();
 }
 
-class _MovieListPageState extends State<MovieListPage> {
+class _GameListPageState extends State<GameListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +20,7 @@ class _MovieListPageState extends State<MovieListPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          'Welcome, ${widget.username}!',
+          'Selamat Datang ${widget.username}!',
           style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -36,9 +34,7 @@ class _MovieListPageState extends State<MovieListPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProfilePage(
-                    username: widget.username,
-                  ),
+                  builder: (context) => ProfilePage(username: widget.username),
                 ),
               );
             },
@@ -51,20 +47,18 @@ class _MovieListPageState extends State<MovieListPage> {
           ),
         ],
       ),
-
       body: ListView.builder(
         padding: const EdgeInsets.all(6),
-        itemCount: movieList.length,
+        itemCount: gameList.length,
         itemBuilder: (context, index) {
-          final movie = movieList[index];
-          final isBookmarked = movie.isBookmarked;
+          final game = gameList[index];
 
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MovieDetailPage(movie: movie),
+                  builder: (context) => GameDetailPage(game: game),
                 ),
               ).then((_) {
                 setState(() {});
@@ -74,10 +68,7 @@ class _MovieListPageState extends State<MovieListPage> {
               margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.zero,
-                side: BorderSide(
-                  color: Colors.black,
-                  width: 0.5,
-                ),
+                side: BorderSide(color: Colors.black, width: 0.5),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(6),
@@ -89,7 +80,7 @@ class _MovieListPageState extends State<MovieListPage> {
                       width: 60,
                       height: 90,
                       child: Image.network(
-                        movie.imgUrl,
+                        game.imageUrls[0],
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -102,7 +93,7 @@ class _MovieListPageState extends State<MovieListPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${movie.title} (${movie.year})',
+                            '${game.name}',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -112,26 +103,13 @@ class _MovieListPageState extends State<MovieListPage> {
                           const SizedBox(height: 4),
 
                           Text(
-                            'Genre: ${movie.genre}',
+                            'price: ${game.price}',
                             style: const TextStyle(fontSize: 12),
                           ),
 
                           const SizedBox(height: 4),
 
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                                size: 14,
-                              ),
-                              const SizedBox(width: 3),
-                              Text(
-                                '${movie.rating} / 10',
-                                style: const TextStyle(fontSize: 12),
-                              ),
-                            ],
-                          ),
+                
 
                           // ===== LIKE COUNT DISPLAY (BARU) =====
                           const SizedBox(height: 4),
@@ -140,11 +118,12 @@ class _MovieListPageState extends State<MovieListPage> {
                               const Icon(
                                 Icons.favorite,
                                 color: Colors.red,
+                      
                                 size: 12,
                               ),
                               const SizedBox(width: 3),
                               Text(
-                                '${movie.likeCount} likes',
+                                '${game.likeCount} likes',
                                 style: const TextStyle(
                                   fontSize: 11,
                                   color: Colors.red,
@@ -166,39 +145,39 @@ class _MovieListPageState extends State<MovieListPage> {
                           IconButton(
                             iconSize: 18,
                             icon: Icon(
-                              movie.isLiked
+                              game.isLiked
                                   ? Icons.favorite
                                   : Icons.favorite_border,
-                              color: movie.isLiked ? Colors.red : Colors.grey,
+                              color: game.isLiked ? Colors.red : Colors.grey,
                             ),
                             onPressed: () {
                               setState(() {
-                                if (movie.isLiked) {
-                                  movie.likeCount--;
-                                  movie.isLiked = false;
+                                if (game.isLiked) {
+                                  game.likeCount--;
+                                  game.isLiked = false;
                                 } else {
-                                  movie.likeCount++;
-                                  movie.isLiked = true;
+                                  game.likeCount++;
+                                  game.isLiked = true;
                                 }
                               });
                             },
                           ),
 
                           // BOOKMARK BUTTON (YANG SUDAH ADA)
-                          IconButton(
-                            iconSize: 20,
-                            icon: Icon(
-                              isBookmarked
-                                  ? Icons.bookmark
-                                  : Icons.bookmark_border,
-                              color: isBookmarked ? Colors.blue : null,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                movie.isBookmarked = !movie.isBookmarked;
-                              });
-                            },
-                          ),
+                          // IconButton(
+                          //   iconSize: 20,
+                          //   icon: Icon(
+                          //     //isBookmarked
+                          //         ? Icons.bookmark
+                          //         : Icons.bookmark_border,
+                          //     color: isBookmarked ? Colors.blue : null,
+                          //   ),
+                          //   onPressed: () {
+                          //     setState(() {
+                          //      // movie.isBookmarked = !movie.isBookmarked;
+                          //     });
+                          //   },
+                          // ),
                         ],
                       ),
                     ),

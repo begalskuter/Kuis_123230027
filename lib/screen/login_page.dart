@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_kuis_a/screen/moviel_list_page.dart';
+import 'package:latihan_kuis_a/screen/game_list_page.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -21,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => MovieListPage(
+          builder: (context) => GameListPage(
             username: _usernameController.text,
           ),
         ),
@@ -62,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 8),
             // Pesan selamat datang
             const Text(
-              'Welcome back to MiniLens!',
+              'Silahkan login buat download game',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
