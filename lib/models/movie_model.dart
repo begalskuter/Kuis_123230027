@@ -8,6 +8,9 @@ class MovieModel {
   String synopsis;
   String imgUrl;
   String movieUrl;
+  bool isBookmarked;
+  int likeCount;      
+  bool isLiked;       
 
   MovieModel({
     required this.title,
@@ -19,6 +22,9 @@ class MovieModel {
     required this.synopsis,
     required this.imgUrl,
     required this.movieUrl,
+    this.isBookmarked = false,
+    this.likeCount = 0,  
+    this.isLiked = false,
   });
 }
 
@@ -34,7 +40,9 @@ List<MovieModel> movieList = [
           "A skilled thief who specializes in corporate espionage is given a final job that could grant him redemption: to plant an idea deep within a target's subconscious. As his team delves into the dream world, reality and illusion blur, making the mission increasingly dangerous.",
       imgUrl:
           "https://m.media-amazon.com/images/M/MV5BMTM0MjUzNjkwMl5BMl5BanBnXkFtZTcwNjY0OTk1Mw@@._V1_.jpg",
-      movieUrl: "https://en.wikipedia.org/wiki/Inception"),
+      movieUrl: "https://en.wikipedia.org/wiki/Inception",
+      likeCount: 150, 
+      isLiked: false),
   MovieModel(
       title: "The Shawshank Redemption",
       year: 1994,
@@ -46,7 +54,9 @@ List<MovieModel> movieList = [
           "Andy Dufresne, a banker wrongly convicted of murder, is sentenced to life in Shawshank prison. Over the years, he befriends fellow inmate Red and earns the trust of the warden, using his skills to help manage prison finances. But Andy has a secret plan that could lead to freedom.",
       imgUrl:
           "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_.jpg",
-      movieUrl: "https://en.wikipedia.org/wiki/The_Shawshank_Redemption"),
+      movieUrl: "https://en.wikipedia.org/wiki/The_Shawshank_Redemption",
+      likeCount: 120, 
+      isLiked: false),
   MovieModel(
       title: "Interstellar",
       year: 2014,
@@ -58,7 +68,9 @@ List<MovieModel> movieList = [
           "In a dystopian future where Earth is slowly becoming uninhabitable, a group of astronauts embarks on a mission through a wormhole in search of a new home for humanity. As they travel through space and time, they face unimaginable challenges, including love, loss, and the nature of human survival.",
       imgUrl:
           "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-      movieUrl: "https://en.wikipedia.org/wiki/Interstellar_(film)"),
+      movieUrl: "https://en.wikipedia.org/wiki/Interstellar_(film)",
+      likeCount: 200, 
+      isLiked: false),
   MovieModel(
     title: "The Dark Knight",
     year: 2008,
@@ -71,7 +83,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/The_Dark_Knight",
-  ),
+      likeCount: 100, 
+      isLiked: false),
   MovieModel(
     title: "Forrest Gump",
     year: 1994,
@@ -84,7 +97,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/Forrest_Gump",
-  ),
+      likeCount: 140, 
+      isLiked: false),
   MovieModel(
     title: "The Matrix",
     year: 1999,
@@ -97,7 +111,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/The_Matrix",
-  ),
+      likeCount: 150, 
+      isLiked: false),
   MovieModel(
     title: "The Godfather",
     year: 1972,
@@ -110,7 +125,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/The_Godfather",
-  ),
+      likeCount: 120, 
+      isLiked: false),
   MovieModel(
     title: "Titanic",
     year: 1997,
@@ -123,7 +139,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
-  ),
+      likeCount: 190, 
+      isLiked: false),
   MovieModel(
     title: "Pulp Fiction",
     year: 1994,
@@ -136,7 +153,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/Pulp_Fiction",
-  ),
+      likeCount: 5, 
+      isLiked: false),
   MovieModel(
     title: "Avatar",
     year: 2009,
@@ -149,7 +167,8 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BMDEzMmQwZjctZWU2My00MWNlLWE0NjItMDJlYTRlNGJiZjcyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/Avatar_(2009_film)",
-  ),
+      likeCount: 1, 
+      isLiked: false),
   MovieModel(
     title: "The Lord of the Rings: The Fellowship of the Ring",
     year: 2001,
@@ -163,7 +182,8 @@ List<MovieModel> movieList = [
         "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl:
         "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_The_Fellowship_of_the_Ring",
-  ),
+      likeCount: 10, 
+      isLiked: false),
   MovieModel(
     title: "Fight Club",
     year: 1999,
@@ -176,5 +196,6 @@ List<MovieModel> movieList = [
     imgUrl:
         "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     movieUrl: "https://en.wikipedia.org/wiki/Fight_Club",
-  ),
+      likeCount: 100000, 
+      isLiked: false),
 ];
