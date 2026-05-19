@@ -1,6 +1,6 @@
-# 🎮 Latihan Kuis - Mobile Game Store Catalog
+# 🎮 Kuis 1 - Mobile Game Store Catalog
 
-A beautiful and modern Flutter mobile application built as a practice project/quiz (**Kuis**) for the **Teknologi Pemrograman Mobile (TPM)** course. This application serves as a Game Store catalog where users can log in, view a list of games, interactive liked states, purchase mock games, and view user profiles.
+A beautiful and modern Flutter mobile application built as the official **Kuis 1** submission for the **Teknologi Pemrograman Mobile (TPM)** course. This application serves as a Game Store catalog where users can log in, view a list of games, interactive liked states, purchase mock games, and view user profiles.
 
 ---
 
@@ -30,7 +30,7 @@ A beautiful and modern Flutter mobile application built as a practice project/qu
         </tr>
         <tr>
           <td><b>Tugas</b></td>
-          <td>: Latihan Kuis 1 (Game Store Catalog)</td>
+          <td>: Kuis 1 (Game Store Catalog)</td>
         </tr>
       </table>
     </td>
