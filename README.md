@@ -1,4 +1,4 @@
-# 🎮 Kuis 1 - Mobile Game Store Catalog
+# 🎮 Kuis - Mobile Game Store Catalog
 
 A beautiful and modern Flutter mobile application built as the official **Kuis 1** submission for the **Teknologi Pemrograman Mobile (TPM)** course. This application serves as a Game Store catalog where users can log in, view a list of games, interactive liked states, purchase mock games, and view user profiles.
 
